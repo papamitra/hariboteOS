@@ -19,6 +19,11 @@ main:
 	movw %ax, %ss
 	sti
 
+	movw $0x0a, %ax
+	movb $0x0e, %ah
+	movl $7, %ebx
+	int $0x10
+	
 	movl $msg1, %esi
 putloop:
 	movzbl (%esi), %eax
