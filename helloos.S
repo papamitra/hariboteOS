@@ -1,15 +1,14 @@
 #define INIT_SEG 0x07c0
 
-	.file "helloos.S"
+.file "helloos.S"
 
-	.code16gcc
+.code16gcc
 
-	.section .rodata
+.section .rodata
 msg1:
-	.string "hello,world"
+.string "hello,world"
 
-	.text
-	ljmp $INIT_SEG, $main
+.text
 main:
 	cli
 	movw $INIT_SEG, %ax
@@ -35,5 +34,5 @@ fin:
 	hlt
 	jmp fin
 
-	.section .sign, "a"
+.section .sign, "a"
 sign:	.word 0xaa55
