@@ -1,38 +1,38 @@
-#define INIT_SEG 0x07c0
+.intel_syntax noprefix
 
 .file "helloos.S"
 
 .code16gcc
 
 .section .rodata
+
 msg1:
 .string "hello,world"
 
 .text
 main:
 	cli
-	movw $INIT_SEG, %ax
-	movw %ax, %ds
-	movw %ax, %es
-	movw %ax, %sp
-	movw $0, %ax
-	movw %ax, %ss
+	mov ax, 0
+	mov ds, ax
+	mov es, ax
+	mov sp, 0x7c00
+	mov ss, ax
 	sti
-
-	movw $0x0a, %ax
-	movb $0x0e, %ah
-	movl $7, %ebx
-	int $0x10
 	
-	movl $msg1, %esi
+	mov al, 0x0a
+	mov ah, 0x0e
+	mov bx, 7
+	int 0x10
+
+	mov si, offset msg1
 putloop:
-	movzbl (%esi), %eax
-	cmpb $0, %al
+	mov al, [si]
+	inc si
+	cmp al, 0
 	je fin
-	incl %esi
-	movb $0x0e, %ah
-	movl $7, %ebx
-	int $0x10
+	mov ah, 0x0e
+	mov bx, 7
+	int 0x10
 	jmp putloop
 
 fin:

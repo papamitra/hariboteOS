@@ -4,8 +4,8 @@ OUTPUT_ARCH(i386:x86-64)
 /* Define memory layout */
 
 MEMORY {
-  body : org =   0, len = 510
-  sign : org = 510, len = 2
+  body : org = 0x7c00, len = 510
+  sign : org = 0x7c00 + 510, len = 2
  }
 
 /* Specify input and output sections */
