@@ -8,7 +8,7 @@ TARGET = hello
 IPL = ipl
 ASMHEAD = asmhead
 BOOTPACK = bootpack
-OBJS = crt.o bootpack.o
+OBJS = crt.o bootpack.o asmfunc.o
 
 ${TARGET}.bin: ${IPL} ${ASMHEAD} ${BOOTPACK}
 	dd if=/dev/zero of=$@ bs=512 count=2880 &> /dev/null

@@ -35,7 +35,7 @@ main:
 
 	mov ah, 0x02
 	int 0x16
-	mov al, [LEDS]
+	mov [LEDS], al
 
 // PICが一切の割り込みを受け付けないようにする
 // AT互換機の仕様では、PICの初期化をするなら、
@@ -102,10 +102,8 @@ pipelineflash:
 	mov edi, DSKCAC  + 512 	// 転送先
 	mov ecx, 0
 	mov cl, CYLS
-	mov eax, 512*18*2/4
-	imul ecx
-	mov ecx, eax
-	sub ecx, 512/4
+	imul ecx, 512*18*2/4
+	sub  ecx, 512/4
 	call memcpy
 
 // asmheadでしなければいけないことは全部し終わったので、
