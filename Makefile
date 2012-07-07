@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -fno-common -Wall -O2 -c \
          -finhibit-size-directive -fno-ident \
-         -fomit-frame-pointer -fcall-used-ebx
+         -fomit-frame-pointer -fcall-used-ebx -m32
 
 TARGET = hello
 IPL = ipl

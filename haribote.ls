@@ -1,5 +1,5 @@
 OUTPUT_FORMAT("binary")/* We want raw binary image */
-OUTPUT_ARCH(i386:x86-64)
+OUTPUT_ARCH(i386)
 
 /* Specify input and output sections */
 
